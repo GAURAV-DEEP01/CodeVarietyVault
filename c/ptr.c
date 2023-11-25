@@ -6,5 +6,4 @@ void main(){
         printf("%d\t",*arrPtr);
         arrPtr++;
     }
-
 }
