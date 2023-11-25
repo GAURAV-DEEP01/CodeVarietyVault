@@ -47,6 +47,9 @@ void insert(Person *p){
     else printf("DUPLICATE INDEX ->  %d\n",hashval);  
 }
 
+void get(char *name){
+    
+}
 void main(){
     init();
     Person p1 = {.name = "bob", .age = 24, .married = false };
