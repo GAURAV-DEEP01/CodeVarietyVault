@@ -44,4 +44,7 @@ void main(){
     for(int i = 0;i<n;i++)
         printf("%s\t\t%d\t%d\t%d\t%d\n",p[i].name,p[i].bt,p[i].st,p[i].ft,p[i].tat);
     printf("\n");
+    for(int i = 0; i<n;i++){
+        free(p[i].name);
+    }
 }
