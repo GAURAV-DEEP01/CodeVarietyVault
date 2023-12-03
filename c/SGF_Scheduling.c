@@ -6,13 +6,14 @@ typedef struct {
     int st,bt,ft,tat;
 }Process;
 
-void main(){
-    int n;
-    Process p[10];
-
-    printf("Enter number of processes\n");
-    scanf("%d",&n);
-    for (int i = 0; i < n; i++){
+void printProcess(Process *p,int n){
+    printf("\nPROCESS NAME\tBURST\tSTART\tFINISH\tTURN AROUND\n");
+    for(int i = 0;i<n;i++)
+        printf("%s\t\t%d\t%d\t%d\t%d\n",p[i].name,p[i].bt,p[i].st,p[i].ft,p[i].tat);
+    printf("\n");
+}
+void getProcess(Process *p,int n){
+     for (int i = 0; i < n; i++){
         char *name = (char*)malloc(sizeof(char)*20);
         printf("Enter process name : ");
         scanf("%s",name);
@@ -20,7 +21,8 @@ void main(){
         printf("Burst Time of process %s : ",p[i].name);
         scanf("%d",&p[i].bt);
     }
-
+}
+void calcProcess(Process *p, int n){
     for (int i = 0; i < n; i++){
         int min = i;
         for(int j = i+1;j<n;j++ )
@@ -40,11 +42,14 @@ void main(){
         p[i].ft = p[i].st + p[i].bt;
         p[i].tat = p[i].ft - p[i].st;
     }
-    printf("\nPROCESS NAME\tBURST\tSTART\tFINISH\tTURN AROUND\n");
-    for(int i = 0;i<n;i++)
-        printf("%s\t\t%d\t%d\t%d\t%d\n",p[i].name,p[i].bt,p[i].st,p[i].ft,p[i].tat);
-    printf("\n");
-    for(int i = 0; i<n;i++){
-        free(p[i].name);
-    }
+}
+void main(){
+    int n;
+    Process p[10];
+    printf("Enter number of processes\n");
+    scanf("%d",&n);
+    getProcess(p,n);
+    calcProcess(p,n);
+    printProcess(p,n);
+    for(int i = 0; i<n;i++) free(p[i].name);
 }
