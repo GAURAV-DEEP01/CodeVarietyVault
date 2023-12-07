@@ -6,18 +6,17 @@ void main(){
     float avgWt,avgTat;
     printf("Enter the number of processes\n");
     scanf("%d",&n);
-    printf("Enter await time and burst time of %d processes\n",n);
+    printf("Enter Arrival time and Burst time of %d processes\n",n);
     for (int i = 0; i < n; i++){
-        printf("Await time of P%d : ",i+1);
+        printf("Arrival time of P%d : ",i+1);
         scanf("%d",&at[i]);
         printf("Burst Time of P%d : ",i+1);
         scanf("%d",&bt[i]);   
     } 
     for (int i = 0; i < n; i++){
         int min = i;
-        for(int j= i+1;j<n;j++){
+        for(int j= i+1;j<n;j++)
             if(at[min]>at[j]) min = j;
-        }
         if(min!=i){
             int temp = at[min];
             at[min] = at[i];
@@ -31,7 +30,7 @@ void main(){
     for (int i = 0; i <n; i++){
         if(i==0){
             st[i] = at[i];
-            wt[i] = st[i];
+            wt[i] = 0;
         }
         else
             if(ft[i-1]-at[i]<0){
@@ -45,7 +44,7 @@ void main(){
         ft[i] = st[i] + bt[i];
         tt[i] = ft[i] - at[i];      
     }
-    printf("\nProcess\tAwait\tBurst\tStart\tFinish\tTurn around\tWait\n");
+    printf("\nProcess\tArrival\tBurst\tStart\tFinish\tTurn around\tWait\n");
     for (int i = 0; i < n; i++){
         printf("P%d\t%d\t%d\t%d\t%d\t%d\t\t%d\n",i+1,at[i],bt[i],st[i],ft[i],tt[i],wt[i]);
         totTat+=tt[i];
