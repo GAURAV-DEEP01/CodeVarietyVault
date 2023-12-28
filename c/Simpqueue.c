@@ -43,7 +43,7 @@ int deQueue(){
     return queue[front++];
 }
 int isEmpty(){
-    if(rear-front == -1){
+    if(rear-front == -1||front==-1){
         printf("\n~~~~~~~~~Queue is empty~~~~~~~~");
         return 1;
     }
